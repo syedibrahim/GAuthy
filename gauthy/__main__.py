@@ -22,19 +22,21 @@ def generate(auth_key: str = typer.Option(None, "--key", "-k", metavar="Authenti
                  writable=False,
                  readable=True,
                  resolve_path=True,
-             )):
+             ),
+             current: bool = typer.Option(False, "--current", "-c")):
     """
     Cli Tool to generate Google Authenticator TOTP
 
-    Usage: python gauthy [--key Authenticator_Key|--qr Path_To_Qr_Image]
+    Usage: python gauthy [--key/-k Authenticator_Key|--qr/-q Path_To_Qr_Image] [--current/-c]
     \f
+    :param current:
     :param qr_code:
     :param auth_key:
     :return:
     """
-    if not auth_key and not qr_code:
+    if (not auth_key and not qr_code) or (auth_key and qr_code):
         typer.echo("Error: Requires command line option either ['--key' / '-k'] or ['--qr' / '-q']")
-        typer.echo("Usage: python gauthy [--key Authenticator_Key|--qr Path_To_Qr_Image]")
+        typer.echo("Usage: python gauthy [--key/-k Authenticator_Key|--qr/-q Path_To_Qr_Image] [--current/-c]")
         raise typer.Exit(code=1)
     try:
         while True:
@@ -43,6 +45,10 @@ def generate(auth_key: str = typer.Option(None, "--key", "-k", metavar="Authenti
                 totp, validity = GenTotp.gen_totp(auth_key)
             elif qr_code:
                 totp, validity = GenTotp.decode_qr_code(qr_code)
+            if current:
+                typer.echo(f"{totp.now()}")
+                typer.echo(f"Valid for: {round(validity,2)}s")
+                raise typer.Exit()
             prev_totp = typer.style(
                 f"{totp.at(for_time=datetime.now() - timedelta(seconds=30))}", fg=typer.colors.RED, dim=True)
             curr_totp = typer.style(
