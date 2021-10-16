@@ -1,10 +1,7 @@
-from urllib.parse import urlparse
-from urllib.parse import parse_qs
 from datetime import datetime
+import typer
 
 import pyotp
-import pyqrcode
-import typer
 from pyzbar.pyzbar import decode
 from PIL import Image
 
@@ -37,11 +34,3 @@ class GenTotp:
             else:
                 typer.echo(err)
             raise typer.Exit(code=1)
-
-        # parsed_url = urlparse(qr_text)
-        # try:
-        #     captured_value = parse_qs(parsed_url.query)['secret'][0]
-        #     return captured_value
-        # except KeyError:
-        #     typer.echo("No secret found in provided google authenticator QR code")
-        #     raise typer.Exit(code=1)
