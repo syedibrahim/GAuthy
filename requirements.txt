@@ -1,2 +1,5 @@
-pyotp
-typer
+pyotp~=2.6.0
+typer~=0.4.0
+pyzbar~=0.1.8
+pillow~=8.4.0
+click~=8.0.3
