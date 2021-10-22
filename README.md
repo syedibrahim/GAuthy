@@ -20,7 +20,7 @@ brew install zbar
 ## How to
 ###Usage:
 ```commandline
-python gauthy [--key/-k Authenticator_Key|--qr/-q Path_To_Qr_Image] [--current/-c]
+python gauthy [--key/-k Authenticator_Key|--qr/-q Path_To_Qr_Image] [--file/-f Storage_File] [--current/-c]
 ```
 ### To generate TOTP using Authenticator Key
 ```commandline
@@ -32,6 +32,11 @@ python gauthy --key YOURAUTHKEYHERE
 ```commandline
 python gauthy -q path/to/image
 python gauthy --qr path/to/image
+```
+### To load TOTPs from text file
+```commandline
+python gauthy -f path/to/file
+python gauthy --file path/to/file
 ```
 ### Other options
 1. To display just current TOTP
