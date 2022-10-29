@@ -5,9 +5,9 @@ Cli based Google Authenticator TOTP Generator
 ## Prerequisites
 
 1. Requires **Python 3.6+**
-2. Install requirements from _**requirements.txt**_
+2. Install requirements using poetry
 ```commandline
-pip install -r requirements.txt
+poetry install
 ```
 3.Install **zbar** package
 ```commandline
