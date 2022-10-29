@@ -17,14 +17,14 @@ For mac user
 ```commandline
 brew install zbar
 ```
-#How to ?
+# How to ?
 
 ---
-###Usage:
+### Usage:
 ```commandline
 python gauthy generate [--key/-k Authenticator_Key | --qr/-q Path_To_Qr_Image | --file/-f Storage_File] [--current/-c]
 ```
-##Generate TOTP using Key or QR code:
+## Generate TOTP using Key or QR code:
 
 ---
 ### To generate TOTP using Authenticator Key
@@ -41,7 +41,7 @@ python gauthy generate --qr path/to/image
 ## Save and Generate TOTP using file
 
 ---
-###Usage:
+### Usage:
 ```commandline
 # To save to a file
 python gauthy save path/to/file [--key/-k Authenticator_Key|--qr/-q Path_To_Qr_Image]
